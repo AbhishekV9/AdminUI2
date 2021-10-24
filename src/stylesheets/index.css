@@ -12,9 +12,9 @@ code {
     monospace;
 }
 
-table, th, td {
+/* table, th, td {
   border: 1px solid black;
-}
+} */
 
 table{
   width: 100%;
@@ -25,11 +25,21 @@ td img{
   width:30px;
 }
 
-input{
-  width:80%;
-}
+
 
 .f_se{
   display: flex;
   justify-content: space-evenly;
+}
+
+#main{
+  width:80%;
+  margin:auto;
+  margin-top: 50px;
+}
+
+#searchbar{
+  width:99%;
+  height:30px;
+  font-size: large;
 }
