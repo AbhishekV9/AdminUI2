@@ -33,9 +33,30 @@ function Table(){
         setUsers(users);
     }
 
+    const filterUsers=async (e)=>{
+        const newValue=e.target.value.toLowerCase();
+        await fetch(api)
+        .then(res=>res.json())
+        .then((data)=>{
+            const filteredUsers=data.filter((user)=>{
+                return user.name
+                .toLowerCase()
+                .includes(newValue) || user.email
+                .toLowerCase()
+                .includes(newValue) || user.role
+                .toLowerCase()
+                .includes(newValue)
+            });
+            setUsers(filteredUsers);
+        })
+        
+    }
+    
+
     return(
         
         <div>
+            <input placeholder="Search By name or email or role" onChange={filterUsers}/>
             <table>
                 <thead>
                     <tr>
