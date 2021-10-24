@@ -9,17 +9,14 @@ function TableRow(props){
     const [role,setRole]=useState(user.role);
 
     const handleNameChange=(e)=>{
-        console.log(e.target.value);
         setName(e.target.value);
     }
 
     const handleEmailChange=(e)=>{
-        console.log(e.target.value);
         setEmail(e.target.value);
     }
 
     const handleRoleChnage=(e)=>{
-        console.log(e.target.value);
         setRole(e.target.value);
     }
 
