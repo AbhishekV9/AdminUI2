@@ -47,6 +47,8 @@ td img{
   box-shadow: 0 0 10px #719ECE;
 }
 
+/* styles for responsiveness on the basis of different device length */
+
 @media Screen and (max-width:768px){
     #searchbar{
       margin-top: 30px;

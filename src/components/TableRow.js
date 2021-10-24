@@ -1,29 +1,35 @@
 import { useState } from 'react';
 
 function TableRow(props){
-    const {user,deleteUser,changeUserDetail}=props;
 
+    //local states
+    const {user,deleteUser,changeUserDetail}=props;
     const [editingMode,setEditingMode]=useState(false);
     const [name,setName]=useState(user.name);
     const [email,setEmail]=useState(user.email);
     const [role,setRole]=useState(user.role);
 
+    //function to handle to change in name
     const handleNameChange=(e)=>{
         setName(e.target.value);
     }
 
+    //function to handle to change in email
     const handleEmailChange=(e)=>{
         setEmail(e.target.value);
     }
 
+    //function to handle to change in role
     const handleRoleChnage=(e)=>{
         setRole(e.target.value);
     }
 
+    //setting edit mode to true
     const setEditModeTrue=()=>{
         setEditingMode(true);
     }
 
+    //setting edit mode to false
     const setEditModeFalse=()=>{
         setEditingMode(false);
     }

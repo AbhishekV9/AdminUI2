@@ -4,15 +4,17 @@ import _ from "lodash";
 import { api } from '../helpers/urls'
 import TableRow from './TableRow';
 
-
+//users shown in one page
 const pageSize=10;
 
 function Table(){
-    const [users,setUsers]=useState([]);
 
+    //local states
+    const [users,setUsers]=useState([]);
     const [paginatedUsers,setPaginatedUsers]=useState([]); 
     const [currentPage,setCurrentPage]=useState(1);
 
+    //fetching users from api and setting it in local states when component is mounted
     useEffect(()=>{
     fetch(api).
     then((res)=>res.json())
@@ -22,6 +24,7 @@ function Table(){
     })
     },[])
 
+    //implimenting deletion of user
     const deleteUser=(id)=>{
         const filteredArray=paginatedUsers.filter(user=>user.id !== id);
         const filteredArray2=users.filter(user=>user.id !== id);
@@ -29,6 +32,7 @@ function Table(){
         setPaginatedUsers(filteredArray);
     }
 
+    //chnaging user details like name,email,role.
     const changeUserDetail=(id,newName,newEmail,newRole)=>{
         const index=users.findIndex(user=>user.id===id);
         users[index].name=newName;
@@ -37,6 +41,7 @@ function Table(){
         setUsers(users);
     }
 
+    //filtering users and setting users and paginated users on the basis of text entered in search bar 
     const filterUsers=async (e)=>{
         const newValue=e.target.value.toLowerCase();
         await fetch(api)
@@ -57,11 +62,12 @@ function Table(){
         
     }
     
+    //no of pages required on the basis of numbers of users
     const pageCount= users ? Math.ceil(users.length/pageSize) : 0 ; 
     
-
     const pages= _.range(1,pageCount+1);
 
+    //setting paginated user acording to the page number
     const pagination=(pageNo)=>{
         setCurrentPage(pageNo);
         const startIndex=(pageNo-1) * pageSize ;
