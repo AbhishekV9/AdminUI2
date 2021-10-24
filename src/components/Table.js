@@ -68,13 +68,13 @@ function Table(){
         const paginatedUser= _(users).slice(startIndex).take(pageSize).value();
         setPaginatedUsers(paginatedUser);
     }
-    
+
     return(
         
         <div id="main">
-            <input id="searchbar" placeholder="Search By name or email or role" onChange={filterUsers}/>
-            <table className="table">
-                <thead >
+            <input id="searchbar" placeholder="Search by name or email or role" onChange={filterUsers}/>
+            <table className="table table-striped table-hover" >
+                <thead className="table-dark" >
                     <tr>
                         <th>Name</th>
                         <th>Email</th>

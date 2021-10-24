@@ -29,7 +29,7 @@ function TableRow(props){
     }
     
     return(
-        <tr>
+        <tr >
             <td>{editingMode ? <input value={name} onChange={handleNameChange}/>:user.name }</td>
             <td>{editingMode ? <input value={email} onChange={handleEmailChange} />:user.email}</td>
             <td>{editingMode ? <input value={role} onChange={handleRoleChnage}/>:user.role}</td>
