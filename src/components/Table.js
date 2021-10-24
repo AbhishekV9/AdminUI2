@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 
 import { api } from '../helpers/urls'
+import TableRow from './TableRow';
 
 
 
 function Table(){
 
     const [users,setUsers]=useState([]);
+    
 
     useEffect(()=>{
     fetch(api).
@@ -19,9 +21,14 @@ function Table(){
     },[])
 
     const deleteUser=(id)=>{
-        const filteredArray=users.filter(user=>user.id != id);
+        const filteredArray=users.filter(user=>user.id !== id);
         setUsers(filteredArray);
     }
+
+    const changeUserDetail=(id,name,email,role)=>{
+        
+    }
+
     return(
         
         <div>
@@ -37,15 +44,7 @@ function Table(){
                 <tbody>
                     { users.map((user)=>{
                         return(
-                        <tr>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.role}</td>
-                            <td>
-                                <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" onClick={()=>deleteUser(user.id)} alt="delete" />
-                                <img src="https://cdn-icons-png.flaticon.com/512/3597/3597075.png" alt="edit" />
-                            </td>
-                        </tr>
+                           <TableRow user={user} deleteUser={deleteUser} changeUserDetail={changeUserDetail} key={user.id}/>
                         )
                     })}
                </tbody>
