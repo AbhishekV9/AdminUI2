@@ -25,8 +25,12 @@ function Table(){
         setUsers(filteredArray);
     }
 
-    const changeUserDetail=(id,name,email,role)=>{
-        
+    const changeUserDetail=(id,newName,newEmail,newRole)=>{
+        const index=users.findIndex(user=>user.id===id);
+        users[index].name=newName;
+        users[index].email=newEmail;
+        users[index].role=newRole;
+        setUsers(users);
     }
 
     return(

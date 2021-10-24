@@ -39,7 +39,7 @@ function TableRow(props){
             <td>
                 {editingMode ?
                  <div>
-                    <img  src="https://as1.ftcdn.net/v2/jpg/01/11/74/62/500_F_111746297_CVI90GwcVOhmYlMsNBxEWlmzUGvC0l33.jpg" onClick={()=>changeUserDetail(user.id,name,email,role)}alt="save"/>
+                    <img  src="https://as1.ftcdn.net/v2/jpg/01/11/74/62/500_F_111746297_CVI90GwcVOhmYlMsNBxEWlmzUGvC0l33.jpg" onClick={()=> { changeUserDetail(user.id,name,email,role); setEditModeFalse(); }}alt="save"/>
                     <img src="https://as2.ftcdn.net/v2/jpg/01/80/70/79/500_F_180707917_IpgHK4fttaqN05pbBqNsXNlXY5az9VIH.jpg" onClick={()=>setEditModeFalse()} alt= "cancel"/>
                 </div> 
                 : 
