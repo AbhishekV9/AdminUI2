@@ -35,14 +35,22 @@ function TableRow(props){
             <td>{editingMode ? <input value={role} onChange={handleRoleChnage}/>:user.role}</td>
             <td>
                 {editingMode ?
-                 <div>
-                    <img  src="https://as1.ftcdn.net/v2/jpg/01/11/74/62/500_F_111746297_CVI90GwcVOhmYlMsNBxEWlmzUGvC0l33.jpg" onClick={()=> { changeUserDetail(user.id,name,email,role); setEditModeFalse(); }}alt="save"/>
-                    <img src="https://as2.ftcdn.net/v2/jpg/01/80/70/79/500_F_180707917_IpgHK4fttaqN05pbBqNsXNlXY5az9VIH.jpg" onClick={()=>setEditModeFalse()} alt= "cancel"/>
+                 <div className="f_se">
+                    <div>
+                        <img  src="https://as1.ftcdn.net/v2/jpg/01/11/74/62/500_F_111746297_CVI90GwcVOhmYlMsNBxEWlmzUGvC0l33.jpg" onClick={()=> { changeUserDetail(user.id,name,email,role); setEditModeFalse(); }}alt="save"/>
+                    </div>
+                    <div>
+                        <img src="https://as2.ftcdn.net/v2/jpg/01/80/70/79/500_F_180707917_IpgHK4fttaqN05pbBqNsXNlXY5az9VIH.jpg" onClick={()=>setEditModeFalse()} alt= "cancel"/>
+                    </div>                   
                 </div> 
                 : 
-                <div>
-                    <img src="https://as1.ftcdn.net/v2/jpg/02/76/19/96/500_F_276199650_Hs5K3QnXm9ZMBLd3DT44YcdWUIf8GHxO.jpg" onClick={()=>deleteUser(user.id)} alt="delete" />
-                    <img src="https://cdn-icons-png.flaticon.com/512/3597/3597075.png" onClick={()=>setEditModeTrue()} alt="edit" />
+                <div className="f_se">
+                    <div>
+                        <img src="https://as1.ftcdn.net/v2/jpg/02/76/19/96/500_F_276199650_Hs5K3QnXm9ZMBLd3DT44YcdWUIf8GHxO.jpg" onClick={()=>deleteUser(user.id)} alt="delete" />
+                    </div>
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3597/3597075.png" onClick={()=>setEditModeTrue()} alt="edit" />
+                    </div>            
                 </div>
                 }
             </td>
