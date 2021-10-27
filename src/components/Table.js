@@ -3,6 +3,8 @@ import _ from "lodash";
 
 import { api } from '../helpers/urls'
 import TableRow from './TableRow';
+import Searchbar from './Searchbar';
+import Tableheader from './Tableheader'
 
 //users shown in one page
 const pageSize=10;
@@ -41,26 +43,6 @@ function Table(){
         setUsers(users);
     }
 
-    //filtering users and setting users and paginated users on the basis of text entered in search bar 
-    const filterUsers=async (e)=>{
-        const newValue=e.target.value.toLowerCase();
-        await fetch(api)
-        .then(res=>res.json())
-        .then((data)=>{
-            const filteredUsers=data.filter((user)=>{
-                return user.name
-                .toLowerCase()
-                .includes(newValue) || user.email
-                .toLowerCase()
-                .includes(newValue) || user.role
-                .toLowerCase()
-                .includes(newValue)
-            });
-            setUsers(filteredUsers);
-            setPaginatedUsers(_(filteredUsers).slice(0).take(pageSize).value())
-        })
-        
-    }
     
     //no of pages required on the basis of numbers of users
     const pageCount= users ? Math.ceil(users.length/pageSize) : 0 ; 
@@ -78,16 +60,11 @@ function Table(){
     return(
         
         <div id="main">
-            <input id="searchbar" placeholder="Search by name or email or role" onChange={filterUsers}/>
+            
+            <Searchbar  setPaginatedUsers={setPaginatedUsers} users={users}/>
+
             <table className="table table-striped table-hover" >
-                <thead className="table-dark" >
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                <Tableheader />
                 <tbody>
                     { paginatedUsers.map((user)=>{
                         return(
