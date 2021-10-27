@@ -15,8 +15,6 @@ function App() {
   const [paginatedUsers,setPaginatedUsers]=useState([]); 
   const [currentPage,setCurrentPage]=useState(1);
 
-
-
   //fetching users from api and setting it in local states when component is mounted
   useEffect(()=>{
     fetch(api).
@@ -27,9 +25,8 @@ function App() {
     })
   },[])
 
-    //no of pages required on the basis of numbers of users
+  //no of pages required on the basis of numbers of users
   const pageCount= users ? Math.ceil(users.length/pageSize) : 0 ; 
-    
   const pages= _.range(1,pageCount+1);
 
   //setting paginated user acording to the page number

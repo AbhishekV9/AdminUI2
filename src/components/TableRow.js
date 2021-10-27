@@ -2,8 +2,9 @@ import { useState } from 'react';
 
 function TableRow(props){
 
-    //local states
     const {user,deleteUser,changeUserDetail}=props;
+
+    //local states
     const [editingMode,setEditingMode]=useState(false);
     const [name,setName]=useState(user.name);
     const [email,setEmail]=useState(user.email);

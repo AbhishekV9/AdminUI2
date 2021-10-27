@@ -1,8 +1,5 @@
 import TableRow from './TableRow';
 import Searchbar from './Searchbar';
-import Tableheader from './Tableheader'
-
-
 
 
 function Table(props){
@@ -28,13 +25,17 @@ function Table(props){
 
     
     return(
-        
         <div id="main">
-            
             <Searchbar  setPaginatedUsers={setPaginatedUsers} users={users}/>
-
             <table className="table table-striped table-hover" >
-                <Tableheader />
+                <thead className="table-dark" >
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
                 <tbody>
                     { paginatedUsers.map((user)=>{
                         return(
