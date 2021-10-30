@@ -27,6 +27,7 @@ function Table(props){
     return(
         <div id="main">
             <Searchbar  setPaginatedUsers={setPaginatedUsers} users={users}/>
+
             <table className="table table-striped table-hover" >
                 <thead className="table-dark" >
                     <tr>

@@ -8,8 +8,8 @@ function Pagination(props){
         <nav className="d-flex justify-content-center">
             <ul className="pagination">
                         {
-                            pages.map((page)=>{
-                                return <li className={
+                            pages.map((page,index)=>{
+                                return <li key={index}className={
                                     page===currentPage ? "page-item active" : "page-item"
                                 }
                                 > 

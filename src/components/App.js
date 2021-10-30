@@ -17,8 +17,8 @@ function App() {
 
   //fetching users from api and setting it in local states when component is mounted
   useEffect(()=>{
-    fetch(api).
-    then((res)=>res.json())
+    fetch(api)
+    .then((res)=>res.json())
     .then((data)=>{
         setUsers(data);
         setPaginatedUsers(_(data).slice(0).take(pageSize).value())
