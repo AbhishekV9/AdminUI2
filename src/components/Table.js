@@ -52,7 +52,7 @@ function Table(props){
             <table className="table table-striped table-hover" >
                 <thead className="table-dark" >
                     <tr>
-                        <th> <input type="checkbox" /></th>
+                        <th> <input type="checkbox" disabled={true}/></th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
