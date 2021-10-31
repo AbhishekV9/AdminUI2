@@ -39,8 +39,20 @@ function App() {
 
   return (
    <div>
-      <Table users={users} setUsers={setUsers} paginatedUsers={paginatedUsers} setPaginatedUsers={setPaginatedUsers} />
-      <Pagination pages={pages} currentPage={currentPage} pagination={pagination}/>
+
+      <Table 
+        users={users} 
+        setUsers={setUsers} 
+        paginatedUsers={paginatedUsers} 
+        setPaginatedUsers={setPaginatedUsers} 
+      />
+
+      <Pagination 
+        pages={pages} 
+        currentPage={currentPage} 
+        pagination={pagination}
+      />
+      
    </div>
   );
 }

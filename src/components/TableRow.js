@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function TableRow(props){
 
-    const {user,deleteUser,changeUserDetail,arr,setArr}=props;
+    const {user,deleteUser,changeUserDetail,selectedUsers,setSelectedUsers}=props;
 
     //local states
     const [editingMode,setEditingMode]=useState(false);
@@ -35,16 +35,18 @@ function TableRow(props){
         setEditingMode(false);
     }
 
+    //clicking on checkbox add particular user id if the user is not present in selectedUser Array or remove particular user id from selectedUser array if the user is already present in the array.
     const addRow=()=>{
-        if(arr.includes(user.id)){
-            const index=arr.indexOf(user.id);
-            arr.splice(index, 1);
-            console.log(arr);
+        if(selectedUsers.includes(user.id)){
+            const index=selectedUsers.indexOf(user.id);
+            selectedUsers.splice(index, 1);
+            setSelectedUsers(selectedUsers);
+            console.log(selectedUsers);
             return;
         }
-        arr.push(user.id);
-        setArr(arr);
-        console.log(arr);
+        selectedUsers.push(user.id);
+        setSelectedUsers(selectedUsers);
+        console.log(selectedUsers);
     }
     
     return(

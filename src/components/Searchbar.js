@@ -1,11 +1,11 @@
 import _ from "lodash";
 
-
+//users shown in one page.
 const pageSize=10;
 
 function Searchbar(props){
 
-    const {users,setPaginatedUsers} = props;
+    const {users,setUsers,setPaginatedUsers,selectedUsers,setSelectedUsers} = props;
     
     //filtering users and setting users and paginated users on the basis of text entered in search bar 
     const filterUser= (e) =>{
@@ -18,14 +18,32 @@ function Searchbar(props){
                 .includes(newValue) || user.role
                 .toLowerCase()
                 .includes(newValue)
+        });
+        setPaginatedUsers(_(filteredUsers).slice(0).take(pageSize).value());
+    }
+
+    //clicking on deleteSelected button deletes all the users whose id's are present in selectedUser array.
+    const deleteSelectedUser=()=>{
+        const filteredUsers= users.filter(user=>{
+            if(!selectedUsers.includes(user.id)){
+                return true;
+            }else{
+                return false;
+            }
         })
-        setPaginatedUsers(_(filteredUsers).slice(0).take(pageSize).value())
+        setSelectedUsers([]);
+        setUsers(filteredUsers);
+        setPaginatedUsers(_(filteredUsers).slice(0).take(pageSize).value());
     }
 
     return(
         <div id="searchbarContainer">
-             <div id="searchbar"><input  placeholder="Search by name or email or role" onChange={filterUser}/></div>
-             <div><button type="button" className="btn btn-danger">Delete Selected</button></div>
+             <div id="searchbar">
+                 <input  placeholder="Search by name or email or role" onChange={filterUser}/>
+             </div>
+             <div>
+                <button type="button" className="btn btn-danger" onClick={deleteSelectedUser}>Delete Selected</button>
+             </div>
         </div>
     )
 }

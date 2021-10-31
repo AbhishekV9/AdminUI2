@@ -5,17 +5,17 @@ import Searchbar from './Searchbar';
 
 
 function Table(props){
-    const array=[];
-    const [arr,setArr]=useState(array);
+    //local state for all the selected users through checkbox.
+    const [selectedUsers,setSelectedUsers]=useState([]);
+
     const {users,setUsers,paginatedUsers,setPaginatedUsers } = props;
     
-
-    //implimenting deletion of user
+    //implimenting deletion of user:-removing the deleted user from paginatedUsers,Users and if users are present in selectedUsers then removing from there also.
     const deleteUser=(id)=>{
         const filteredArray=paginatedUsers.filter(user=>user.id !== id);
         const filteredArray2=users.filter(user=>user.id !== id);
-        const filteredArr=arr.filter(ids=>ids !== id);
-        setArr(filteredArr);
+        const filteredArr=selectedUsers.filter(ids=>ids !== id);
+        setSelectedUsers(filteredArr);
         setUsers(filteredArray2);
         setPaginatedUsers(filteredArray);
     }
@@ -32,7 +32,13 @@ function Table(props){
     
     return(
         <div id="main">
-            <Searchbar  setPaginatedUsers={setPaginatedUsers} users={users}/>
+            <Searchbar  
+                setPaginatedUsers={setPaginatedUsers} 
+                users={users} 
+                setUsers={setUsers} 
+                selectedUsers={selectedUsers} 
+                setSelectedUsers={setSelectedUsers}
+            />
 
             <table className="table table-striped table-hover" >
                 <thead className="table-dark" >
@@ -47,7 +53,14 @@ function Table(props){
                 <tbody>
                     { paginatedUsers.map((user)=>{
                         return(
-                           < TableRow user={user} deleteUser={deleteUser} changeUserDetail={changeUserDetail} key={user.id} arr={arr} setArr={setArr}/>
+                           < TableRow 
+                                user={user} 
+                                deleteUser={deleteUser} 
+                                changeUserDetail={changeUserDetail}
+                                key={user.id} 
+                                selectedUsers={selectedUsers} 
+                                setSelectedUsers={setSelectedUsers}
+                           />
                         )
                     })}
                </tbody>
