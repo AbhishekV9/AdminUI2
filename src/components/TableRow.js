@@ -7,7 +7,7 @@ function TableRow(props){
             deleteUser,
             changeUserDetail,
             selectedUsers,
-            setSelectedUsers }=props;
+            setSelectedUsers } = props;
 
     //local states
     const [editingMode,setEditingMode]=useState(false);
