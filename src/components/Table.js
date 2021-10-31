@@ -1,16 +1,21 @@
+import { useState } from 'react';
+
 import TableRow from './TableRow';
 import Searchbar from './Searchbar';
 
 
 function Table(props){
-
-    const {users,setUsers,paginatedUsers,setPaginatedUsers } = props;
     const array=[];
+    const [arr,setArr]=useState(array);
+    const {users,setUsers,paginatedUsers,setPaginatedUsers } = props;
+    
 
     //implimenting deletion of user
     const deleteUser=(id)=>{
         const filteredArray=paginatedUsers.filter(user=>user.id !== id);
         const filteredArray2=users.filter(user=>user.id !== id);
+        const filteredArr=arr.filter(ids=>ids !== id);
+        setArr(filteredArr);
         setUsers(filteredArray2);
         setPaginatedUsers(filteredArray);
     }
@@ -42,7 +47,7 @@ function Table(props){
                 <tbody>
                     { paginatedUsers.map((user)=>{
                         return(
-                           < TableRow user={user} deleteUser={deleteUser} changeUserDetail={changeUserDetail} key={user.id} arr={array}/>
+                           < TableRow user={user} deleteUser={deleteUser} changeUserDetail={changeUserDetail} key={user.id} arr={arr} setArr={setArr}/>
                         )
                     })}
                </tbody>
