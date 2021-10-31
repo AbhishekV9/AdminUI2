@@ -5,6 +5,7 @@ import Searchbar from './Searchbar';
 function Table(props){
 
     const {users,setUsers,paginatedUsers,setPaginatedUsers } = props;
+    const array=[];
 
     //implimenting deletion of user
     const deleteUser=(id)=>{
@@ -31,6 +32,7 @@ function Table(props){
             <table className="table table-striped table-hover" >
                 <thead className="table-dark" >
                     <tr>
+                        <th> <input type="checkbox" /></th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
@@ -40,7 +42,7 @@ function Table(props){
                 <tbody>
                     { paginatedUsers.map((user)=>{
                         return(
-                           < TableRow user={user} deleteUser={deleteUser} changeUserDetail={changeUserDetail} key={user.id} />
+                           < TableRow user={user} deleteUser={deleteUser} changeUserDetail={changeUserDetail} key={user.id} arr={array}/>
                         )
                     })}
                </tbody>

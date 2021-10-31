@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 function TableRow(props){
 
-    const {user,deleteUser,changeUserDetail}=props;
+    const {user,deleteUser,changeUserDetail,arr}=props;
 
     //local states
     const [editingMode,setEditingMode]=useState(false);
@@ -34,9 +34,22 @@ function TableRow(props){
     const setEditModeFalse=()=>{
         setEditingMode(false);
     }
+
+    const addRow=()=>{
+        if(arr.includes(user.id)){
+            const index=arr.indexOf(user.id);
+            console.log(index);
+            arr.splice(index, 1);
+            console.log(arr);
+            return;
+        }
+        arr.push(user.id);
+        console.log(arr);
+    }
     
     return(
         <tr >
+            <td><input type="checkbox" onClick={addRow}/></td>
             <td>{editingMode ? <input value={name} onChange={handleNameChange}/>:user.name }</td>
             <td>{editingMode ? <input value={email} onChange={handleEmailChange} />:user.email}</td>
             <td>{editingMode ? <input value={role} onChange={handleRoleChnage}/>:user.role}</td>
