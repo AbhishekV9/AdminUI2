@@ -4,9 +4,11 @@ function Pagination(props){
 
     const {pages,currentPage,pagination,setSelectedUsers}=props;
 
+    //changing page removes all the Users id from selectesdUsers array
     const setSelectedUsersAsNone=()=>{
         setSelectedUsers([]);
     }
+   
 
     return(
         <nav className="d-flex justify-content-center">

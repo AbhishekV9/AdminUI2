@@ -2,7 +2,12 @@ import { useState } from 'react';
 
 function TableRow(props){
 
-    const {user,deleteUser,changeUserDetail,selectedUsers,setSelectedUsers}=props;
+    const {
+            user,
+            deleteUser,
+            changeUserDetail,
+            selectedUsers,
+            setSelectedUsers }=props;
 
     //local states
     const [editingMode,setEditingMode]=useState(false);
@@ -41,12 +46,10 @@ function TableRow(props){
             const index=selectedUsers.indexOf(user.id);
             selectedUsers.splice(index, 1);
             setSelectedUsers(selectedUsers);
-            console.log(selectedUsers);
             return;
         }
         selectedUsers.push(user.id);
         setSelectedUsers(selectedUsers);
-        console.log(selectedUsers);
     }
     
     return(

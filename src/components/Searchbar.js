@@ -5,7 +5,13 @@ const pageSize=10;
 
 function Searchbar(props){
 
-    const {users,setUsers,setPaginatedUsers,selectedUsers,setSelectedUsers} = props;
+    const { 
+            users,
+            setUsers,
+            setPaginatedUsers,
+            selectedUsers,
+            setSelectedUsers,
+            currentPage } = props;
     
     //filtering users and setting users and paginated users on the basis of text entered in search bar 
     const filterUser= (e) =>{
@@ -24,6 +30,10 @@ function Searchbar(props){
 
     //clicking on deleteSelected button deletes all the users whose id's are present in selectedUser array.
     const deleteSelectedUser=()=>{
+        if(selectedUsers.length===0){
+            alert("Please Select Users To Delete");
+            return;
+        }
         const filteredUsers= users.filter(user=>{
             if(!selectedUsers.includes(user.id)){
                 return true;
@@ -33,7 +43,7 @@ function Searchbar(props){
         })
         setSelectedUsers([]);
         setUsers(filteredUsers);
-        setPaginatedUsers(_(filteredUsers).slice(0).take(pageSize).value());
+        setPaginatedUsers(_(filteredUsers).slice((currentPage-1)*10).take(pageSize).value());
     }
 
     return(

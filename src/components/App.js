@@ -50,6 +50,7 @@ function App() {
         setPaginatedUsers={setPaginatedUsers} 
         selectedUsers={selectedUsers}
         setSelectedUsers={setSelectedUsers}
+        currentPage={currentPage}
       />
 
       <Pagination 
