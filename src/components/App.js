@@ -15,6 +15,9 @@ function App() {
   const [paginatedUsers,setPaginatedUsers]=useState([]); 
   const [currentPage,setCurrentPage]=useState(1);
 
+  //local state for all the selected users through checkbox.
+  const [selectedUsers,setSelectedUsers]=useState([]);
+
   //fetching users from api and setting it in local states when component is mounted
   useEffect(()=>{
     fetch(api)
@@ -45,12 +48,15 @@ function App() {
         setUsers={setUsers} 
         paginatedUsers={paginatedUsers} 
         setPaginatedUsers={setPaginatedUsers} 
+        selectedUsers={selectedUsers}
+        setSelectedUsers={setSelectedUsers}
       />
 
       <Pagination 
         pages={pages} 
         currentPage={currentPage} 
         pagination={pagination}
+        setSelectedUsers={setSelectedUsers}
       />
       
    </div>

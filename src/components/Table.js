@@ -1,14 +1,11 @@
-import { useState } from 'react';
-
 import TableRow from './TableRow';
 import Searchbar from './Searchbar';
 
 
 function Table(props){
-    //local state for all the selected users through checkbox.
-    const [selectedUsers,setSelectedUsers]=useState([]);
+    
 
-    const {users,setUsers,paginatedUsers,setPaginatedUsers } = props;
+    const {users,setUsers,paginatedUsers,setPaginatedUsers,selectedUsers,setSelectedUsers } = props;
     
     //implimenting deletion of user:-removing the deleted user from paginatedUsers,Users and if users are present in selectedUsers then removing from there also.
     const deleteUser=(id)=>{

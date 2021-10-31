@@ -2,14 +2,18 @@
 
 function Pagination(props){
 
-    const {pages,currentPage,pagination}=props;
+    const {pages,currentPage,pagination,setSelectedUsers}=props;
+
+    const setSelectedUsersAsNone=()=>{
+        setSelectedUsers([]);
+    }
 
     return(
         <nav className="d-flex justify-content-center">
             <ul className="pagination">
                         {
                             pages.map((page,index)=>{
-                                return <li key={index}className={
+                                return <li onClick={setSelectedUsersAsNone} key={index}className={
                                     page===currentPage ? "page-item active" : "page-item"
                                 }
                                 > 
