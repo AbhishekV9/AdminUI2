@@ -23,8 +23,9 @@ function Searchbar(props){
     }
 
     return(
-        <div>
-             <input id="searchbar" placeholder="Search by name or email or role" onChange={filterUser}/>
+        <div id="searchbarContainer">
+             <div id="searchbar"><input  placeholder="Search by name or email or role" onChange={filterUser}/></div>
+             <div><button type="button" class="btn btn-danger">Delete Selected</button></div>
         </div>
     )
 }

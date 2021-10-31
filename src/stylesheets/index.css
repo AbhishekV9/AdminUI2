@@ -35,26 +35,43 @@ td img{
   margin-top: 15px;
 }
 
+
+#searchbarContainer{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+}
+
 #searchbar{
-  width:99%;
+  width:83%;
+}
+input{
+  width:100%;
   height:35px;
   font-size: large;
 }
 
-#searchbar:focus {
+input:focus{
   outline: none !important;
   border:1px solid lightblue;
   box-shadow: 0 0 10px #719ECE;
+  width: 100%;
 }
 
+.btn{
+  margin-top: -2px;
+}
 /* styles for responsiveness on the basis of different device length */
 
 @media Screen and (max-width:768px){
     #searchbar{
+      width: 70%;
       margin-top: 30px;
       height:40px;
     }
-
+    .btn{
+      margin-top: 30px;
+    }
     td img{
       height:35px;
       width:35px;
@@ -63,8 +80,12 @@ td img{
 
 @media Screen and (max-width:512px){
     #searchbar{
+      width: 60%;
       margin-top: 10px;
       height:40px;
+    }
+    .btn{
+      margin-top: 10px;
     }
     #main{
       width:95%;
@@ -79,8 +100,14 @@ td img{
 
 @media Screen and (max-width:400px){
   #searchbar{
-    margin-left: auto;
+    width: 70%;
+  }
+  #searchbarContainer{
     width: 100%;
+  }
+  .btn{
+    font-size: x-small!important;
+    height:35px;
   }
   #main{
     width:98%;
